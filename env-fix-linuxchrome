@@ -1,0 +1,28 @@
+# Git & Python Workflow for Chromebook Linux
+
+## 1. Fixing Git Repository Issues
+* **"Everything up-to-date" but GitHub is empty:** Run `ls -A`. If you only see `.git`, your code is in the wrong folder. Move your files into the folder where the `.git` folder lives.
+* **Nested Repository Warning:** If you see a "hint" about an embedded repository, it means you have a `.git` folder inside another `.git` folder. 
+  **Fix:** Run `rm -rf .git` in the subfolder to "wipe" its memory and let the main project track it.
+* **Branch Mismatch:** GitHub uses `main` by default. If your terminal says `master`, rename it: 
+  `git branch -M main`
+
+## 2. Starting a New Project from a Template
+To use your template without affecting the original repository:
+1. **Clone the template:** `git clone [URL] [New-Folder-Name]`
+2. **Cut the cord:** `cd [New-Folder-Name]` then `rm -rf .git`
+3. **Start fresh:** `git init`
+4. **Set your new home:** `git remote add origin [New-GitHub-URL]`
+5. **Verify:** `git remote -v` (Should show your NEW project name).
+
+## 3. Python Virtual Environments (venv) on Chromebook
+Chromebooks often need a specific package to create environments.
+* **Install Fix:** `sudo apt update && sudo apt install python3-venv -y`
+* **Create Environment:** `python3 -m venv venv`
+* **Activate:** `source venv/bin/activate`
+* **Indicator:** Your terminal should now show `(venv)` at the start of the line.
+
+## 4. Keeping it Clean (The .gitignore)
+Create a file named `.gitignore` in your root folder. Add this line to prevent your environment files from cluttering GitHub:
+```text
+venv/
