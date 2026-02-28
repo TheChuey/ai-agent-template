@@ -1,0 +1,9 @@
+# requirements.txt
+langchain
+langchain-openai
+langchain-anthropic
+langchain-ollama
+pydantic
+python-dotenv
+wikipedia
+duckduckgo-search
